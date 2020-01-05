@@ -11,3 +11,12 @@ class Config:
     ARTICLES_BASE_URL = 'https://newsapi.org/v2/everything?sources={}&apiKey=fc44e252019a4642b8194a9006c9a279'
     NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
+
+
+class ProdConfig(Config):
+    '''
+    Production  configuration child class
+     Args:
+        Config: The parent configuration class with General configuration settings
+    '''
+    pass
