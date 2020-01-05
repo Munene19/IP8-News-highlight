@@ -1,4 +1,4 @@
-from Flask import flask, render_template
+from flask import Flask, render_template
 from newsapi import NewsApiClient
 
 app = Flask(__name__)
@@ -26,6 +26,9 @@ def index():
 
 
     myList = zip(news, desc, img)
+
+
+    return render_template('index.html', context = myList)
 
 
 
