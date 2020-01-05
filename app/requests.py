@@ -30,35 +30,35 @@ def get_topstories(source):
         print(get_topstories_response)
         topstories_results = None
 
-        if get_topnews_response['articles']:
-            topnews_results_list = get_topnews_response['articles']
-            topnews_results = process_results(topnews_results_list)
+        if get_topstories_response['articles']:
+            topstories_results_list = get_topstories_response['articles']
+            topstories_results = process_results(topstories_results_list)
 
-    return topnews_results
+    return topstories_results
 
 
-def process_results(topnews_list):
+def process_results(topstories_list):
     '''
-    Function  that processes the topnews result and transform them to a list of objects
+    Function  that processes the topstories result and transform them to a list of objects
     Args:
-        topnews_list: A list of dictionaries that contain topnews details
+        topstories_list: A list of dictionaries that contain topstories details
     Returns :
-        topnews_results: A list of topnews objects
+        topstories_results: A list of topstories objects
     '''
-    topnews_results = []
-    for topnews_item in topnews_list:
-        name = topnews_item.get('name')
-        title = topnews_item.get('title')
-        author = topnews_item.get('author')
-        description = topnews_item.get('description')
-        urlToImage = topnews_item.get('urlToImage')
-        url = topnews_item.get('url')
+    topstories_results = []
+    for topstories_item in topstories_list:
+        name = topstories_item.get('name')
+        title = topstories_item.get('title')
+        author = topstories_item.get('author')
+        description = topstories_item.get('description')
+        urlToImage = topstories_item.get('urlToImage')
+        url = topstories_item.get('url')
 
         if urlToImage:
-            topnews_object = TopNews(name, author, title, description, urlToImage, url)
-            topnews_results.append(topnews_object)
+            topstories_object = Topstories(name, author, title, description, urlToImage, url)
+            topstories_results.append(topstories_object)
 
-    return topnews_results
+    return topstories_results
 
 
 def get_categories(category):
