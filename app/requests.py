@@ -1,5 +1,5 @@
 import urllib.request, json
-from .models import TopNews, Categories, NewsUpdate
+from .models import Topstories, Categories, NewsUpdate
 
 # Getting api key
 api_key = None
@@ -13,22 +13,22 @@ base3_url = None
 def configure_request(app):
     global api_key, base_url, base2_url, base3_url
     api_key = app.config['NEWS_API_KEY']
-    base_url = app.config["TOPNEWS_API_BASE_URL"]
+    base_url = app.config["TOPSTORIES_API_BASE_URL"]
     base2_url = app.config["CATEGORIES_API_BASE_URL"]
     base3_url = app.config["ARTICLES_BASE_URL"]
 
 
-def get_topnews(source):
+def get_topstories(source):
     """
     Function that gets the json response to our url request
     """
-    get_topnews_url = base_url.format(source)
+    get_topstories_url = base_url.format(source)
 
-    with urllib.request.urlopen(get_topnews_url) as url:
-        get_topnews_data = url.read()
-        get_topnews_response = json.loads(get_topnews_data)
-        print(get_topnews_response)
-        topnews_results = None
+    with urllib.request.urlopen(get_topstories_url) as url:
+        get_topstories_data = url.read()
+        get_topstories_response = json.loads(get_topstories_data)
+        print(get_topstories_response)
+        topstories_results = None
 
         if get_topnews_response['articles']:
             topnews_results_list = get_topnews_response['articles']

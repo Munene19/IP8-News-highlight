@@ -10,9 +10,9 @@ class Categories:
         self.url = url
 
 
-class TopNews:
+class Topstories:
     """
-    Topnews class to define topnews objects
+    Topstories class to define topstories objects
     """
 
     def __init__(self, name, author, title, description, urlToImage, url):
