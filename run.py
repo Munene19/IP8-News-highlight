@@ -5,17 +5,15 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def index():
+def Index():
     newsapi = NewsApiClient(api_key="65034e770a4f45ffaeafc84d023e3ca4")
-    Headlines = newsapi.get_top_headlines(sources=bbc-news)
-
+    topheadlines = newsapi.get_top_headlines(sources="al-jazeera-english")
 
     articles = topheadlines['articles']
 
     desc = []
     news = []
     img = []
-
 
     for i in range(len(articles)):
         myarticles = articles[i]
@@ -24,11 +22,10 @@ def index():
         desc.append(myarticles['description'])
         img.append(myarticles['urlToImage'])
 
+    mylist = zip(news, desc, img)
 
-    myList = zip(news, desc, img)
-
-
-    return render_template('index.html', context = myList)
+    return render_template('index.html', context=mylist)
 
 
-
+if__name__ == '__main__'
+app.run(debug=True)
