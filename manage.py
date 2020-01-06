@@ -28,7 +28,28 @@ from newsapi import NewsApiClient
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route("/")
+def home():
+    newsapi = NewsApiClient(api_key="fc44e252019a4642b8194a9006c9a279")
+    topstories = newsapi.get_top_headlines(sources="al-jazeera-english")
+
+    articles = topstories['articles']
+
+    img = []
+    desc = []
+
+    for i in range(len(articles)):
+        myarticles = articles[i]
+
+        img.append(myarticles['urlToImage'])
+        desc.append(myarticles['description'])
+
+    mylist = zip(img, desc)
+
+    return render_template('landing.html', context=mylist)
+
+
+@app.route('/index')
 def index():
     newsapi = NewsApiClient(api_key="fc44e252019a4642b8194a9006c9a279")
     topstories = newsapi.get_top_headlines(sources="al-jazeera-english")
